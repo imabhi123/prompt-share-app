@@ -15,13 +15,11 @@ const handler = NextAuth({
     async session({ session }) {
       const sessionUser = await User.findOne({ email: session.user.email });
       session.user.id = sessionUser._id.toString();
-
       return session;
     },
     async signIn({  profile }) {
       try {
         await connectToDB();
-        
         const userExists = await User.findOne({ email: profile.email });
         if (!userExists) {
           await User.create({
@@ -33,8 +31,8 @@ const handler = NextAuth({
 
         return true
       } catch (error) {
-        console.log("Error checking if user exists: ", error.message);
-        return false
+        console.log("Error checking if user exists: ", error);
+        return false;
       }
     }
     },
