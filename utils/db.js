@@ -17,10 +17,8 @@ export const connectToDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-    console.log('abhishek')
     isConnected = true;
 
-    console.log('MongoDB connected')
   } catch (error) {
     console.log(error.message);
   }

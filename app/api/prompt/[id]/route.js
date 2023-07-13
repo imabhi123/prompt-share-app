@@ -18,7 +18,7 @@ export const GET = async (request, { params }) => {
 export const PATCH = async (request, { params }) => {
     const { prompt, tag } = await request.json();
 
-    try {
+    try { 
         await connectToDB();
 
         const existingPrompt = await Prompt.findById(params.id);
